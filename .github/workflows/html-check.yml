@@ -1,0 +1,14 @@
+name: HTML Linter Check         # Name of the automation
+on: [push, pull_request]        # TRIGGER: Run whenever you push OR make a PR
+
+jobs:
+  check-html:
+    runs-on: ubuntu-latest      # THE RUNNER: A fresh Linux computer
+    steps:
+      - name: Checkout Code     # Step 1: Copy your files to the runner
+        uses: actions/checkout@v4
+
+      - name: Validate HTML     # Step 2: Use a pre-made tool to check HTML
+        uses: htmlhint/htmlhint-action@v2
+        with:
+          rules-file: .htmlhintrc # (Optional) Custom rules
